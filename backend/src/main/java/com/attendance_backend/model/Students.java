@@ -13,9 +13,7 @@ public class Students {
     private String studentIndex;
     private String studentName;
     private String studentSurname;
-
-    @ManyToOne
-    private StudentsGroup studentsGroup;
+    private Long studentGroupId;
 
     public Students() {}
 }

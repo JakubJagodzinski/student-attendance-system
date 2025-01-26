@@ -41,10 +41,11 @@ public class TermService {
     public Term updateTerm(Long termId, Term termDetails) {
         Term term = termRepository.findById(termId).orElse(null);
         if (term != null) {
-            term.setDate(termDetails.getDate());
-            term.setStartTime(termDetails.getStartTime());
-            term.setEndTime(termDetails.getEndTime());
-            term.setStudentsGroup(termDetails.getStudentsGroup());
+            term.setTermName(termDetails.getTermName());
+            term.setTermDate(termDetails.getTermDate());
+            term.setTermStartTime(termDetails.getTermStartTime());
+            term.setTermEndTime(termDetails.getTermEndTime());
+            term.setTermGroupId(termDetails.getTermGroupId());
             return termRepository.save(term);
         }
         return null;

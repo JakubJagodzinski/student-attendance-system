@@ -43,7 +43,7 @@ public class StudentService {
         if (students != null) {
             students.setStudentName(studentsDetails.getStudentName());
             students.setStudentSurname(studentsDetails.getStudentSurname());
-            students.setStudentsGroup(studentsDetails.getStudentsGroup());
+            students.setStudentGroupId(studentsDetails.getStudentGroupId());
             return studentRepository.save(students);
         }
         return null;
