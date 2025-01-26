@@ -10,7 +10,7 @@ public class Attendance {
 
     static public final String ATTENDANCE_STATUS_PRESENT = "Obecny";
     static public final String ATTENDANCE_STATUS_ABSENT = "Nieobecny";
-    static public final String ATTENDANCE_STATUS_EXCUSED = "Usprawiedliwony";
+    static public final String ATTENDANCE_STATUS_EXCUSED = "Usprawiedliwiony";
 
     public Attendance(Long attendanceId, String studentIndex, Long groupId, Long termId, String attendanceStatus) {
         this.attendanceId = attendanceId;

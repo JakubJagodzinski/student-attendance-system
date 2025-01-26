@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/terms")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TermController {
 
     private final TermService termService;

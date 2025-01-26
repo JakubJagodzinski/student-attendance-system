@@ -23,8 +23,8 @@ const AttendanceTable = ({ student }) => {
                     className={`badge ${
                       item.attendanceStatus === "Obecny"
                         ? "bg-success"
-                        : item.attendanceStatus === "Spóźniony"
-                        ? "bg-warning"
+                        : item.attendanceStatus === "Usprawiedliwiony"
+                        ? "bg-primary"
                         : "bg-danger"
                     }`}
                   >
