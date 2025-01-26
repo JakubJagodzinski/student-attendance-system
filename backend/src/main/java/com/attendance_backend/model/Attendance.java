@@ -9,14 +9,10 @@ public class Attendance {
 
     @Id
     @GeneratedValue
-    private Long attendanceID;
-
-    @ManyToOne
-    private Students students;
-
-    @ManyToOne
-    private Term term;
-
+    private Long attendanceId;
+    private String studentIndex;
+    private Long groupId;
+    private Long termId;
     private String attendanceStatus;
 
     public Attendance() {

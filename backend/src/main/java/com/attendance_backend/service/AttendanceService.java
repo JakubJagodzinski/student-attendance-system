@@ -42,8 +42,8 @@ public class AttendanceService {
         Attendance attendance = attendanceRepository.findById(attendanceId).orElse(null);
         if (attendance != null) {
             attendance.setAttendanceStatus(attendanceDetails.getAttendanceStatus());
-            attendance.setTerm(attendanceDetails.getTerm());
-            attendance.setStudents(attendanceDetails.getStudents());
+            attendance.setTermId(attendanceDetails.getTermId());
+            attendance.setStudentIndex(attendanceDetails.getStudentIndex());
             return attendanceRepository.save(attendance);
         }
         return null;
