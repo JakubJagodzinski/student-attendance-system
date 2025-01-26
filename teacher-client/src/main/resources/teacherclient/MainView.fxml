@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="526.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<BorderPane prefHeight="526.0" prefWidth="1165.0" style="-fx-background-color: #50616c;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <center>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
@@ -20,7 +20,7 @@
                            <center>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <TableView fx:id="groupsTableView" editable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="studentsGroupsTableView" editable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columns>
                                           <TableColumn fx:id="groupName" editable="false" prefWidth="240.0" text="Nazwa grupy" />
                                           <TableColumn fx:id="groupDescription" minWidth="0.0" prefWidth="533.0" text="Opis" />
@@ -37,7 +37,7 @@
                            <left>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="addGroup" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleAddGroupButtonAction" text="Stwórz grupę" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                    <Button fx:id="addGroup" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddGroupButtonAction" prefHeight="30.0" prefWidth="100.0" text="Stwórz grupę" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                            </left>
@@ -55,7 +55,7 @@
                                           <TableColumn fx:id="studentIndex" editable="false" prefWidth="201.0" text="Indeks" />
                                           <TableColumn fx:id="studentName" minWidth="0.0" prefWidth="203.0" text="Imię" />
                                           <TableColumn fx:id="studentSurname" editable="false" minWidth="0.0" prefWidth="222.0" text="Nazwisko" />
-                                          <TableColumn fx:id="studentGroup" editable="false" minWidth="0.0" prefWidth="289.0" text="Grupa" />
+                                          <TableColumn fx:id="studentGroupName" editable="false" minWidth="0.0" prefWidth="289.0" text="Grupa" />
                                           <TableColumn fx:id="studentOperations" editable="false" minWidth="0.0" prefWidth="134.0" text="Operacje" />
                                        </columns>
                                        <columnResizePolicy>
@@ -68,7 +68,7 @@
                            <left>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="addStudent" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleAddStudentButtonAction" text="Dodaj studenta" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                    <Button fx:id="addStudent" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddStudentButtonAction" prefHeight="30.0" prefWidth="100.0" text="Dodaj studenta" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                            </left>
@@ -84,10 +84,10 @@
                                     <TableView fx:id="termsTableView" editable="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <columns>
                                           <TableColumn fx:id="termName" editable="false" prefWidth="218.0" text="Nazwa" />
-                                          <TableColumn fx:id="termGroup" minWidth="0.0" prefWidth="121.0" text="Grupa" />
+                                          <TableColumn fx:id="termGroupName" minWidth="0.0" prefWidth="121.0" text="Grupa" />
                                           <TableColumn fx:id="termDate" editable="false" minWidth="0.0" prefWidth="235.0" text="Data" />
-                                          <TableColumn fx:id="termHourStart" editable="false" minWidth="0.0" prefWidth="168.0" text="Czas rozpoczęcia" />
-                                          <TableColumn fx:id="termHourEnd" editable="false" minWidth="0.0" prefWidth="174.0" text="Czas zakończenia" />
+                                          <TableColumn fx:id="termStartTime" editable="false" minWidth="0.0" prefWidth="168.0" text="Czas rozpoczęcia" />
+                                          <TableColumn fx:id="termEndTime" editable="false" minWidth="0.0" prefWidth="174.0" text="Czas zakończenia" />
                                           <TableColumn fx:id="termOperations" editable="false" minWidth="0.0" prefWidth="141.0" text="Operacje" />
                                        </columns>
                                        <columnResizePolicy>
@@ -100,7 +100,7 @@
                            <left>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="addTerm" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleAddTermButtonAction" text="Dodaj termin" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+                                    <Button fx:id="addTerm" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddTermButtonAction" prefHeight="30.0" prefWidth="100.0" text="Dodaj termin" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
                                  </children>
                               </AnchorPane>
                            </left>

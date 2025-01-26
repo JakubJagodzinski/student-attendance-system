@@ -15,9 +15,22 @@ public class SceneSwitcher {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/teacherclient/" + sceneFXMLName));
             Parent root = fxmlLoader.load();
 
+            // Pobierz bieżący Stage
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Zapisz aktualne wymiary okna
+            double currentWidth = stage.getWidth();
+            double currentHeight = stage.getHeight();
+
+            // Ustaw nową scenę
             stage.setScene(new Scene(root));
             stage.setTitle(windowTitle);
+
+            // Przywróć poprzedni rozmiar okna
+            stage.setWidth(currentWidth);
+            stage.setHeight(currentHeight);
+
+            // Pokaż okno
             stage.show();
 
         } catch (IOException e) {

@@ -1,20 +1,34 @@
 package entities;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private String studentIndex;
     private String studentName;
     private String studentSurname;
-    private String studentGroup;
+    private Long studentGroupId;
+    private String studentGroupName;
 
-    public Student(String studentIndex, String studentName, String studentSurname, String studentGroup) {
+    public Student(String studentIndex, String studentName, String studentSurname, Long studentGroupId) {
         this.studentIndex = studentIndex;
         this.studentName = studentName;
         this.studentSurname = studentSurname;
-        this.studentGroup = studentGroup;
+        this.studentGroupId = studentGroupId;
+    }
+
+    public Student() {
     }
 
     public String getStudentIndex() {
         return studentIndex;
+    }
+
+    public String getStudentGroupName() {
+        return studentGroupName;
+    }
+
+    public void setStudentGroupName(String studentGroupName) {
+        this.studentGroupName = studentGroupName;
     }
 
     public void setStudentIndex(String studentIndex) {
@@ -37,17 +51,17 @@ public class Student {
         this.studentSurname = studentSurname;
     }
 
-    public String getStudentGroup() {
-        return studentGroup;
+    public Long getStudentGroupId() {
+        return studentGroupId;
     }
 
-    public void setStudentGroup(String studentGroup) {
-        this.studentGroup = studentGroup;
+    public void setStudentGroupId(Long studentGroupId) {
+        this.studentGroupId = studentGroupId;
     }
 
     @Override
     public String toString() {
-        return studentIndex + " " + studentName + " " + studentSurname + " " + studentGroup;
+        return studentIndex + " " + studentName + " " + studentSurname + " " + studentGroupId;
     }
 
 }

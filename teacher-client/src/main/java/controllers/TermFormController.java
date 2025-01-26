@@ -1,12 +1,15 @@
 package controllers;
 
 import entities.StudentsGroup;
+import entities.Term;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import utils.AlertHandler;
 import utils.ViewsNames;
 
+import static apis.ApisController.studentsGroupsApiClient;
+import static apis.ApisController.termsApiClient;
 import static utils.AlertHandler.showAlert;
 import static utils.SceneSwitcher.switchScene;
 
@@ -51,12 +54,10 @@ public class TermFormController {
 
         groupName.setCellValueFactory(new PropertyValueFactory<>("groupName"));
 
-        // groups temporary data
-        groupsTableView.getItems().add(new StudentsGroup("Grupa A", "Opis grupy A", 5));
-        groupsTableView.getItems().add(new StudentsGroup("Grupa B", "Opis grupy B", 10));
-        groupsTableView.getItems().add(new StudentsGroup("Grupa C", "Opis grupy C", 8));
-
-        // TODO dodac logike pobierania dostępnych grup z bazy danych
+        var studentsGroups = studentsGroupsApiClient.getStudentsGroups();
+        for (var studentGroup : studentsGroups) {
+            groupsTableView.getItems().addAll(studentGroup);
+        }
 
     }
 
@@ -85,7 +86,11 @@ public class TermFormController {
                 || (Integer.parseInt(startHour) == Integer.parseInt(endHour) && Integer.parseInt(startMinute) < Integer.parseInt(endMinute)))
                 && selectedGroup != null) {
 
-            // TODO dodawanie / edytowanie terminu w bazie danych :)
+            String startTime = startHour + ":" + (startMinute.equals("0") ? "00" : startMinute);
+            String endTime = endHour + ":" + (endMinute.equals("0") ? "00" : endMinute);
+            Term newTerm = new Term(name, selectedGroup.getGroupId(), startDate, startTime, endTime);
+
+            termsApiClient.addTerm(newTerm);
 
             showAlert(Alert.AlertType.INFORMATION, AlertHandler.SUCCESS, "Dodano termin");
             termNameField.clear();

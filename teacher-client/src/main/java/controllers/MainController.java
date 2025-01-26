@@ -11,13 +11,16 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 import utils.ViewsNames;
 
+import java.util.Objects;
+
+import static apis.ApisController.*;
 import static utils.SceneSwitcher.switchScene;
 
 public class MainController {
 
     // ------------------------------------- GROUPS -------------------------------------
     @FXML
-    private TableView<StudentsGroup> groupsTableView;
+    private TableView<StudentsGroup> studentsGroupsTableView;
 
     @FXML
     private TableColumn<StudentsGroup, String> groupName;
@@ -45,7 +48,7 @@ public class MainController {
     private TableColumn<Student, String> studentSurname;
 
     @FXML
-    private TableColumn<Student, String> studentGroup;
+    private TableColumn<Student, String> studentGroupName;
 
     @FXML
     private TableColumn<Student, Void> studentOperations;
@@ -58,16 +61,16 @@ public class MainController {
     private TableColumn<Term, String> termName;
 
     @FXML
-    private TableColumn<Term, String> termGroup;
+    private TableColumn<Term, String> termGroupName;
 
     @FXML
     private TableColumn<Term, String> termDate;
 
     @FXML
-    private TableColumn<Term, String> termHourStart;
+    private TableColumn<Term, String> termStartTime;
 
     @FXML
-    private TableColumn<Term, String> termHourEnd;
+    private TableColumn<Term, String> termEndTime;
 
     @FXML
     private TableColumn<Term, Void> termOperations;
@@ -75,19 +78,65 @@ public class MainController {
     @FXML
     private TabPane mainTabPane;
 
+    private static final int iconSize = 16;
+
     static private int lastSelectedTabIndex = 0;
 
-    public void setLastSelectedTabIndex(int newLastSelectedTabIndex) {
-        lastSelectedTabIndex = newLastSelectedTabIndex;
+    private void reloadStudentsGroupsTable() {
+        studentsTableView.getItems().clear();
+
+        var students = studentsApiClient.getStudents();
+        var studentsGroups = studentsGroupsApiClient.getStudentsGroups();
+
+        for (var student : students) {
+
+            for (var studentsGroup : studentsGroups) {
+                if (student.getStudentGroupId() == null) {
+                    student.setStudentGroupName("Student nie należy do żadnej grupy");
+                    break;
+                }
+                if (Objects.equals(student.getStudentGroupId(), studentsGroup.getGroupId())) {
+                    student.setStudentGroupName(studentsGroup.getGroupName());
+                    break;
+                }
+            }
+            studentsTableView.getItems().add(student);
+        }
+
+        studentsGroupsTableView.getItems().clear();
+
+        for (var studentsGroup : studentsGroups) {
+            int numerOfStudents = 0;
+            for (var student : students) {
+                if (student.getStudentGroupId() != null && student.getStudentGroupId().equals(studentsGroup.getGroupId())) {
+                    numerOfStudents++;
+                }
+            }
+            studentsGroup.setGroupNumberOfStudents(numerOfStudents);
+            studentsGroupsTableView.getItems().add(studentsGroup);
+        }
+
+        termsTableView.getItems().clear();
+
+        var terms = termsApiClient.getTerms();
+        for (var term : terms) {
+            var studentsGroup = studentsGroupsApiClient.getStudentsGroupById(term.getTermGroupId());
+            term.setTermGroupName(studentsGroup.getGroupName());
+            termsTableView.getItems().add(term);
+        }
+
     }
 
     @FXML
     public void initialize() {
+        // ustawianie ostatnio otworzonego panelu
         mainTabPane.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
             lastSelectedTabIndex = newValue.intValue();
         });
 
         mainTabPane.getSelectionModel().select(lastSelectedTabIndex);
+
+        // -------------------------------- mapowanie do gui --------------------------------
 
         // Mapowanie kolumn na właściwości klasy Group
         groupName.setCellValueFactory(new PropertyValueFactory<>("groupName"));
@@ -98,32 +147,21 @@ public class MainController {
         studentIndex.setCellValueFactory(new PropertyValueFactory<>("studentIndex"));
         studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         studentSurname.setCellValueFactory(new PropertyValueFactory<>("studentSurname"));
-        studentGroup.setCellValueFactory(new PropertyValueFactory<>("studentGroup"));
+        studentGroupName.setCellValueFactory(new PropertyValueFactory<>("studentGroupName"));
 
         // Mapowanie kolumn na właściwości klasy Term
         termName.setCellValueFactory(new PropertyValueFactory<>("termName"));
-        termGroup.setCellValueFactory(new PropertyValueFactory<>("termGroup"));
+        termGroupName.setCellValueFactory(new PropertyValueFactory<>("termGroupName"));
         termDate.setCellValueFactory(new PropertyValueFactory<>("termDate"));
-        termHourStart.setCellValueFactory(new PropertyValueFactory<>("termHourStart"));
-        termHourEnd.setCellValueFactory(new PropertyValueFactory<>("termHourEnd"));
+        termStartTime.setCellValueFactory(new PropertyValueFactory<>("termStartTime"));
+        termEndTime.setCellValueFactory(new PropertyValueFactory<>("termEndTime"));
 
-        //Todo Logika pobrania rekordów z bazy danych
 
-        // groups temporary data
-        groupsTableView.getItems().add(new StudentsGroup("Grupa A", "Opis grupy A", 5));
-        groupsTableView.getItems().add(new StudentsGroup("Grupa B", "Opis grupy B", 10));
-        groupsTableView.getItems().add(new StudentsGroup("Grupa C", "Opis grupy C", 8));
+        // -------------------------------- pobieranie danych z bazy --------------------------------
 
-        // students temporary data
-        studentsTableView.getItems().add(new Student("123456", "Jan", "Kowalski", "Grupa A"));
-        studentsTableView.getItems().add(new Student("654321", "Krzysztof", "Nowak", "Grupa B"));
-        studentsTableView.getItems().add(new Student("987654", "Anna", "Kowalska", "Grupa C"));
+        reloadStudentsGroupsTable();
 
-        // terms temporary data
-        termsTableView.getItems().add(new Term("Termin A", "Grupa A", "0", "1", "2"));
-        termsTableView.getItems().add(new Term("Termin B", "Grupa B", "1", "2", "3"));
-        termsTableView.getItems().add(new Term("Termin C", "Grupa C", "1", "3", "4"));
-
+        // -------------------------------- dodawanie przyciskow --------------------------------
         addButtonsToGroupsTable();
         addButtonsToStudentsTable();
         addButtonsToTermsTable();
@@ -138,12 +176,9 @@ public class MainController {
                     private final Button addStudentsButton = new Button();
 
                     {
-                        Integer iconWidth = 16;
-                        Integer iconHeight = 16;
-
                         ImageView addStudentsIcon = new ImageView(new Image(getClass().getResource("/icons/user.png").toExternalForm()));
-                        addStudentsIcon.setFitWidth(iconWidth);
-                        addStudentsIcon.setFitHeight(iconHeight);
+                        addStudentsIcon.setFitWidth(MainController.iconSize);
+                        addStudentsIcon.setFitHeight(iconSize);
                         addStudentsButton.setGraphic(addStudentsIcon);
                         Tooltip addStudentsButtonTooltip = new Tooltip("Dodaj studentów do grupy");
                         addStudentsButtonTooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -151,8 +186,8 @@ public class MainController {
                         addStudentsButton.setTooltip(addStudentsButtonTooltip);
 
                         ImageView deleteIcon = new ImageView(new Image(getClass().getResource("/icons/remove.png").toExternalForm()));
-                        deleteIcon.setFitWidth(iconWidth);
-                        deleteIcon.setFitHeight(iconHeight);
+                        deleteIcon.setFitWidth(MainController.iconSize);
+                        deleteIcon.setFitHeight(iconSize);
                         deleteGroupButton.setGraphic(deleteIcon);
                         Tooltip deleteGroupButtontooltip = new Tooltip("Usuń grupę");
                         deleteGroupButtontooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -161,14 +196,13 @@ public class MainController {
 
                         deleteGroupButton.setOnAction(event -> {
                             StudentsGroup data = getTableView().getItems().get(getIndex());
-                            System.out.println("Usuń grupe " + data.getGroupName());
-                            // TODO logika usuwania grupy z bazy
+                            studentsGroupsApiClient.deleteStudentsGroup(data.getGroupId());
                             getTableView().getItems().remove(data);
                         });
 
                         addStudentsButton.setOnAction(event -> {
                             StudentsGroup data = getTableView().getItems().get(getIndex());
-                            System.out.println("Dodaj studentów do grupy " + data.getGroupName());
+                            AddStudentsToGroupController.setGroupId(data.getGroupId());
                             AddStudentsToGroupController.setGroupName(data.getGroupName());
                             switchScene(event, ViewsNames.FXML_ADD_STUDENTS_TO_GROUP_VIEW, ViewsNames.WINDOW_NAME_ADD_STUDENTS_TO_GROUP_VIEW);
                         });
@@ -199,12 +233,9 @@ public class MainController {
                     private final Button deleteStudentButton = new Button();
 
                     {
-                        Integer iconWidth = 16;
-                        Integer iconHeight = 16;
-
                         ImageView removeStudentFromGroupIcon = new ImageView(new Image(getClass().getResource("/icons/remove_from_group.png").toExternalForm()));
-                        removeStudentFromGroupIcon.setFitWidth(iconWidth);
-                        removeStudentFromGroupIcon.setFitHeight(iconHeight);
+                        removeStudentFromGroupIcon.setFitWidth(iconSize);
+                        removeStudentFromGroupIcon.setFitHeight(iconSize);
                         removeStudentFromGroupButton.setGraphic(removeStudentFromGroupIcon);
                         Tooltip removeStudentFromGroupButtontooltip = new Tooltip("Usuń studenta z grupy");
                         removeStudentFromGroupButtontooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -212,8 +243,8 @@ public class MainController {
                         removeStudentFromGroupButton.setTooltip(removeStudentFromGroupButtontooltip);
 
                         ImageView deleteIcon = new ImageView(new Image(getClass().getResource("/icons/remove.png").toExternalForm()));
-                        deleteIcon.setFitWidth(iconWidth);
-                        deleteIcon.setFitHeight(iconHeight);
+                        deleteIcon.setFitWidth(iconSize);
+                        deleteIcon.setFitHeight(iconSize);
                         deleteStudentButton.setGraphic(deleteIcon);
                         Tooltip deleteStudentButtontooltip = new Tooltip("Usuń studenta");
                         deleteStudentButtontooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -222,17 +253,17 @@ public class MainController {
 
                         removeStudentFromGroupButton.setOnAction(event -> {
                             Student data = getTableView().getItems().get(getIndex());
-                            System.out.println("Usunięto studenta " + data.getStudentIndex() + " z grupy " + data.getStudentGroup());
-                            // TODO dodac logike usuwania nr grupy studenta
+                            data.setStudentGroupId(null);
+                            studentsApiClient.updateStudent(data);
+                            studentsTableView.refresh();
+                            reloadStudentsGroupsTable();
                         });
 
                         deleteStudentButton.setOnAction(event -> {
                             Student data = getTableView().getItems().get(getIndex());
-                            System.out.println("Usuń studenta " + data.getStudentIndex());
-                            // TODO logika usuwania studenta z bazy
+                            studentsApiClient.deleteStudent(data.getStudentIndex());
                             getTableView().getItems().remove(data);
                         });
-
                     }
 
                     @Override
@@ -260,12 +291,9 @@ public class MainController {
                     private final Button deleteTermButton = new Button();
 
                     {
-                        Integer iconWidth = 16;
-                        Integer iconHeight = 16;
-
                         ImageView setPresenceIcon = new ImageView(new Image(getClass().getResource("/icons/list.png").toExternalForm()));
-                        setPresenceIcon.setFitWidth(iconWidth);
-                        setPresenceIcon.setFitHeight(iconHeight);
+                        setPresenceIcon.setFitWidth(MainController.iconSize);
+                        setPresenceIcon.setFitHeight(iconSize);
                         setPresenceButton.setGraphic(setPresenceIcon);
                         Tooltip setPresenceButtontooltip = new Tooltip("Ustaw obecności dla terminu");
                         setPresenceButtontooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -273,8 +301,8 @@ public class MainController {
                         setPresenceButton.setTooltip(setPresenceButtontooltip);
 
                         ImageView deleteIcon = new ImageView(new Image(getClass().getResource("/icons/remove.png").toExternalForm()));
-                        deleteIcon.setFitWidth(iconWidth);
-                        deleteIcon.setFitHeight(iconHeight);
+                        deleteIcon.setFitWidth(MainController.iconSize);
+                        deleteIcon.setFitHeight(iconSize);
                         deleteTermButton.setGraphic(deleteIcon);
                         Tooltip deleteTermButtontooltip = new Tooltip("Usuń termin");
                         deleteTermButtontooltip.setShowDelay(javafx.util.Duration.millis(500));
@@ -283,14 +311,12 @@ public class MainController {
 
                         deleteTermButton.setOnAction(event -> {
                             Term data = getTableView().getItems().get(getIndex());
-                            System.out.println("Usuń termin " + data.getTermName());
-                            // TODO logika usuwania terminu z bazy
+                            termsApiClient.deleteTerm(data.getTermId());
                             getTableView().getItems().remove(data);
                         });
 
                         setPresenceButton.setOnAction(event -> {
                             Term data = getTableView().getItems().get(getIndex());
-                            System.out.println("Ustaw obecności dla terminu " + data.getTermName());
                             SetTermAttendanceController.setTermId(data.getTermId());
                             switchScene(event, ViewsNames.FXML_SET_TERM_PRESENCE_VIEW, ViewsNames.WINDOW_NAME_SET_TERM_PRESENCE_VIEW);
                         });
