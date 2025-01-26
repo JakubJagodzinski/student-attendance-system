@@ -10,6 +10,7 @@ module com.example.teacherclient {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires spring.web;
 
     opens teacherclient to javafx.fxml;
     exports teacherclient;

@@ -2,22 +2,64 @@ package entities;
 
 public class Attendance {
 
-    private Integer attendanceId;
+    private Long attendanceId;
     private String studentIndex;
-    private Integer groupId;
-    private Integer termId;
+    private Long groupId;
+    private Long termId;
     private String attendanceStatus;
 
     static public final String ATTENDANCE_STATUS_PRESENT = "present";
     static public final String ATTENDANCE_STATUS_ABSENT = "absent";
     static public final String ATTENDANCE_STATUS_EXCUSED = "excused";
 
-    public Attendance(Integer attendanceId, String studentIndex, Integer groupId, Integer termId, String attendanceStatus) {
+    public Attendance(Long attendanceId, String studentIndex, Long groupId, Long termId, String attendanceStatus) {
         this.attendanceId = attendanceId;
         this.studentIndex = studentIndex;
         this.groupId = groupId;
         this.termId = termId;
         this.attendanceStatus = attendanceStatus;
+    }
+
+    public Attendance(String studentIndex, Long groupId, Long termId, String attendanceStatus) {
+        this.studentIndex = studentIndex;
+        this.groupId = groupId;
+        this.termId = termId;
+        this.attendanceStatus = attendanceStatus;
+    }
+
+    public Attendance() {
+    }
+
+    public Long getAttendanceId() {
+        return attendanceId;
+    }
+
+    public void setAttendanceId(Long attendanceId) {
+        this.attendanceId = attendanceId;
+    }
+
+    public String getStudentIndex() {
+        return studentIndex;
+    }
+
+    public void setStudentIndex(String studentIndex) {
+        this.studentIndex = studentIndex;
+    }
+
+    public Long getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
+
+    public Long getTermId() {
+        return termId;
+    }
+
+    public void setTermId(Long termId) {
+        this.termId = termId;
     }
 
     public String getAttendanceStatus() {
@@ -30,23 +72,7 @@ public class Attendance {
 
     @Override
     public String toString() {
-        return attendanceStatus;
-    }
-
-    public Integer getAttendanceId() {
-        return attendanceId;
-    }
-
-    public String getStudentIndex() {
-        return studentIndex;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public Integer getTermId() {
-        return termId;
+        return attendanceId + " " + studentIndex + " " + groupId + " " + termId + " " + attendanceStatus;
     }
 
 }

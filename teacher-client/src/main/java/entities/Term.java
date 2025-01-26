@@ -1,25 +1,33 @@
 package entities;
 
 public class Term {
-    //term id jest niedostepny dla usera
 
-    private Integer termId;
+    private Long termId;
     private String termName;
-    private String termGroup;
+    private Long termGroupId;
     private String termDate;
-    private String termHourStart;
-    private String termHourEnd;
+    private String termStartTime;
+    private String termEndTime;
+    private String termGroupName;
 
-    public Term(String termName, String termGroup, String termDate, String termHourStart, String termHourEnd) {
+    public Term(String termName, Long termGroup, String termDate, String termStartTime, String termEndTime) {
         this.termName = termName;
-        this.termGroup = termGroup;
+        this.termGroupId = termGroup;
         this.termDate = termDate;
-        this.termHourStart = termHourStart;
-        this.termHourEnd = termHourEnd;
+        this.termStartTime = termStartTime;
+        this.termEndTime = termEndTime;
     }
 
-    public Integer getTermId() {
+    public Term() {
+    }
+
+
+    public Long getTermId() {
         return termId;
+    }
+
+    public void setTermId(Long termId) {
+        this.termId = termId;
     }
 
     public String getTermName() {
@@ -30,12 +38,12 @@ public class Term {
         this.termName = termName;
     }
 
-    public String getTermGroup() {
-        return termGroup;
+    public Long getTermGroupId() {
+        return termGroupId;
     }
 
-    public void setTermGroup(String termGroup) {
-        this.termGroup = termGroup;
+    public void setTermGroupId(Long termGroupId) {
+        this.termGroupId = termGroupId;
     }
 
     public String getTermDate() {
@@ -46,25 +54,33 @@ public class Term {
         this.termDate = termDate;
     }
 
-    public String getTermHourStart() {
-        return termHourStart;
+    public String getTermStartTime() {
+        return termStartTime;
     }
 
-    public void setTermHourStart(String termHourStart) {
-        this.termHourStart = termHourStart;
+    public void setTermStartTime(String termStartTime) {
+        this.termStartTime = termStartTime;
     }
 
-    public String getTermHourEnd() {
-        return termHourEnd;
+    public String getTermEndTime() {
+        return termEndTime;
     }
 
-    public void setTermHourEnd(String termHourEnd) {
-        this.termHourEnd = termHourEnd;
+    public void setTermEndTime(String termEndTime) {
+        this.termEndTime = termEndTime;
+    }
+
+    public void setTermGroupName(String termGroupName) {
+        this.termGroupName = termGroupName;
+    }
+
+    public String getTermGroupName() {
+        return termGroupName;
     }
 
     @Override
     public String toString() {
-        return "[" + termName + "] " + termGroup + " " + termHourStart + " " + termHourEnd;
+        return "[" + termName + "] " + termGroupId + " " + termStartTime + " " + termEndTime;
     }
 
 }

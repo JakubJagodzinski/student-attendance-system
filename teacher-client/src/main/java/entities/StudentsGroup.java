@@ -1,6 +1,8 @@
 package entities;
 
-public class StudentsGroup {
+import java.io.Serializable;
+
+public class StudentsGroup implements Serializable {
 
     private Long groupId;
     private String groupName;
@@ -11,6 +13,13 @@ public class StudentsGroup {
         this.groupName = groupName;
         this.groupDescription = groupDescription;
         this.groupNumberOfStudents = groupNumberOfStudents;
+    }
+
+    public StudentsGroup() {
+    }
+
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     public Long getGroupId() {

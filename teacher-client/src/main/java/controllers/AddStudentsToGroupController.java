@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import utils.ViewsNames;
 
+import static apis.ApisController.studentsApiClient;
 import static utils.SceneSwitcher.switchScene;
 
 public class AddStudentsToGroupController {
@@ -24,7 +25,13 @@ public class AddStudentsToGroupController {
     @FXML
     private TableColumn<Student, String> studentSurname;
 
+    static private Long groupId = null;
+
     static private String groupName = null;
+
+    static public void setGroupId(Long newGroupId) {
+        groupId = newGroupId;
+    }
 
     static public void setGroupName(String newGroupName) {
         groupName = newGroupName;
@@ -38,25 +45,23 @@ public class AddStudentsToGroupController {
         studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
         studentSurname.setCellValueFactory(new PropertyValueFactory<>("studentSurname"));
 
-        // TODO dodac logike pobierania studentow z bazy (studenci którzy nie mają przypisanej grrupy bądz ich grupa nie istnieje D:
-
-        studentsTableView.getItems().add(new Student("123456", "Jan", "Kowalski", ""));
-        studentsTableView.getItems().add(new Student("654321", "Krzysztof", "Nowak", ""));
-        studentsTableView.getItems().add(new Student("987654", "Anna", "Kowalska", ""));
-
+        var students = studentsApiClient.getStudents();
+        for (var student : students) {
+            if (student.getStudentGroupId() == null) {
+                studentsTableView.getItems().add(student);
+            }
+        }
     }
 
     @FXML
     protected void handleSaveButtonAction(javafx.event.ActionEvent event) {
+        var studentsInTable = studentsTableView.getSelectionModel().getSelectedItems();
 
-        var students = studentsTableView.getSelectionModel().getSelectedItems();
-        System.out.println("This group name " + groupName);
-        for (var student : students) {
-            System.out.println(student.toString());
+        for (var student : studentsInTable) {
+            student.setStudentGroupId(groupId);
+            student.setStudentGroupName(groupName);
+            studentsApiClient.updateStudent(student);
         }
-
-
-        //TODO Dodawnie studentow do grupy do bazy danych :)
 
         switchScene(event, ViewsNames.FXML_MAIN_VIEW, ViewsNames.WINDOW_NAME_MAIN_VIEW);
     }
