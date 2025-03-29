@@ -5,98 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08dc6aa6-3996-4d3d-9fe1-a5ee40cb2e03" name="Changes" comment="small gui upgrades">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/ApisController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/AttendancesApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/StudentsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/StudentsGroupsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/apis/TermsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/AddStudentsToGroupController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/GroupFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/LoadingScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/SetTermAttendanceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/StudentFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/controllers/TermFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/entities/Attendance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/entities/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/entities/StudentsGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/entities/Term.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/teacherclient/MainApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/utils/AlertHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/utils/SceneSwitcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/java/utils/ViewsNames.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/app_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/list.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/remove_from_group.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/icons/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/AddStudentsToGroupView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/ConnectionView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/GroupFormView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/MainView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/SetTermAttendanceView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/StudentFormView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/src/main/resources/teacherclient/TermFormView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/ApisController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/AttendancesApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/StudentsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/StudentsGroupsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/apis/TermsApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/AddStudentsToGroupController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/GroupFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/LoadingScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/MainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/SetTermAttendanceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/StudentFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/controllers/TermFormController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/entities/Attendance.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/entities/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/entities/StudentsGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/entities/Term.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/teacherclient/MainApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/utils/AlertHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/utils/SceneSwitcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/java/utils/ViewsNames.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/app_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/list.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/remove.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/remove_from_group.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/icons/user.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/styles/mainViewSytles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/AddStudentsToGroupView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/ConnectionView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/GroupFormView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/MainView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/SetTermAttendanceView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/StudentFormView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-client/teacher-client/src/main/resources/teacherclient/TermFormView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,26 +52,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kubaj/Desktop/Studia/V semestr/Zaawansowane Programowanie Obiektowe (3 ECTS)/Projekt",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kubaj/Desktop/Studia/V semestr/Zaawansowane Programowanie Obiektowe (3 ECTS)/Projekt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kubaj\Desktop\Studia\V semestr\Zaawansowane Programowanie Obiektowe (3 ECTS)\Projekt" />
@@ -174,8 +83,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.153" />
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.153" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
       </set>
     </attachedChunks>
   </component>
@@ -191,6 +100,7 @@
       <workItem from="1737840683105" duration="235000" />
       <workItem from="1737919781941" duration="80000" />
       <workItem from="1737920217439" duration="310000" />
+      <workItem from="1743275343019" duration="278000" />
     </task>
     <task id="LOCAL-00001" summary="small gui upgrades">
       <option name="closed" value="true" />

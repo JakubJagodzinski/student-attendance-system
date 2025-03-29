@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Tworzymy instancję axios z domyślnym ustawieniem baseURL
 const api = axios.create({
-  baseURL: 'http://localhost:8080', // Ustawienie backendu na porcie 8080
+  baseURL: 'http://localhost:3307', // Ustawienie backendu na porcie 8080
   timeout: 10000,  // Czas oczekiwania na odpowiedź
 });
 
