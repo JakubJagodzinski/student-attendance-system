@@ -1,6 +1,6 @@
 # <img src="teacher-client/src/main/resources/icons/app_icon.png" height="25px" width="25px"> Student Attendance System
 
-The project is an attendance management system designed for both teachers and students. <br>
+This project is about an attendance management system designed for both teachers and students. <br>
 Teachers can manage students, groups, and attendance records, including marking students as present, late, or absent. <br>
 They can also add or remove students and groups, assign students to groups, and schedule attendance sessions. <br>
 Students can log in using their student ID to view their group information and attendance records. <br>
