@@ -165,6 +165,8 @@ Now you can see all your student that you have created and their attendance info
    - Docker Desktop and MySQL container (you can create schema in IntelliJ and launch backend there)
 4. Intellij (tested in version 2024.1.2)
 
+<br><br>
+
 ## Instalation steps:
 1. Launch MySQL service on 3306 port in desired app (f.e. Docker Desktop)
 2. With Intellij open folder `backend` and go to `/src/main/java/com/attendance_backend` and run file `BackendApplication.java`
@@ -174,6 +176,8 @@ Now you can see all your student that you have created and their attendance info
 npm install
 npm run dev
 ```
+
+<br><br>
 
 ## Bugs:
 1. If you get *"no JDK configured error"*, your Java is not added to PATH. Add it to PATH and retry all of the installation steps.
